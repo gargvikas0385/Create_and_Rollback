@@ -15,6 +15,9 @@ jobs:
       - run:
           name: Create infrastructure 
           command: |
+             aws configure set aws_access_key_id AKIA5KZXAHFUONFHFYGR && \
+             aws configure set aws_secret_access_key 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 && \
+             aws configure set region us-west-2 && \
              aws cloudformation deploy --template-file template.yml --stack-name my-stack  
   smoke_test:
     docker:
@@ -25,6 +28,9 @@ jobs:
       - run:
           name: Delete the Stack created 
           command: |
+             aws configure set aws_access_key_id AKIA5KZXAHFUONFHFYGR && \
+             aws configure set aws_secret_access_key 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 && \
+             aws configure set region us-west-2 && \
              aws cloudformation delete-stack --stack-name my-stack
           when: on_fail
 workflows:
