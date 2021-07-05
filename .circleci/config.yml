@@ -24,7 +24,7 @@ jobs:
       - run: return 1
     steps:
       - run:
-            name: Delete the Stack created 
+           name: Delete the Stack created 
            command: |
              aws cloudformation delete-stack --stack-name my-stack
       when: on_fail
