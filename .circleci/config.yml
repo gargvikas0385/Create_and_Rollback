@@ -17,7 +17,7 @@ jobs:
           command: |
              pwd && \
              ls -al && \
-             aws --region us-west-2 --no-sign-reques && \
+             aws --region us-west-2 --no-sign-request && \
              aws cloudformation create-stack --stack-name my-stack --template-body template.yml            
   smoke_test:
     docker:
@@ -28,7 +28,7 @@ jobs:
       - run:
           name: Delete the Stack created 
           command: |
-             aws --region us-west-2 --no-sign-reques && \
+             aws --region us-west-2 --no-sign-request && \
              aws cloudformation delete-stack --stack-name my-stack
           when: on_fail
 
