@@ -21,12 +21,10 @@ jobs:
       - image: amazon/aws-cli
     steps:
       - checkout 
-      - run:
-          name: Run Smoke Test and Fail
-          command: |
-            return 1
+      - run: return 1
       - destroy_environment
         when: on_fail
+
 workflows:
   my_workflow:
     jobs:
