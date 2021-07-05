@@ -22,7 +22,6 @@ jobs:
     steps:
       - checkout 
       - run: return 1
-    steps:
       - run:
           name: Delete the Stack created 
           command: |
