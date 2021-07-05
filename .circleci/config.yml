@@ -20,7 +20,7 @@ jobs:
              aws configure set default.region us-west-2 && \
              aws configure set aws_access_key_id default_access_key && \
              aws configure set aws_secret_access_key default_secret_key && \
-             aws cloudformation deploy --template-file template.yml --stack-name my-stack            
+             aws cloudformation create-stack --stack-name my-stack --template-file template.yml            
   smoke_test:
     docker:
       - image: amazon/aws-cli
