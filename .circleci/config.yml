@@ -6,6 +6,7 @@ commands:
           name: Delete the Stack created 
           command: |
             aws cloudformation delete-stack --stack-name my-stack
+            
 jobs:
   configure_infrastructure:
     docker:
