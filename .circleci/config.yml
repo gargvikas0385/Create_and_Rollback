@@ -19,9 +19,27 @@ jobs:
              ls -al && \
              aws configure set aws_access_key_id AKIA5KZXAHFUONFHFYGR && \
              aws configure set aws_secret_access_key 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 && \
-             aws configure set region us-west-2
-             
+             aws configure set region us-west-2 && \
+             aws cloudformation create-stack --stack-name my-stack --template-body template.yml            
+  smoke_test:
+    docker:
+      - image: amazon/aws-cli
+    steps:
+      - checkout 
+      - run: return 1
+      - run:
+          name: Delete the Stack created 
+          command: |
+             aws configure set aws_access_key_id AKIA5KZXAHFUONFHFYGR && \
+             aws configure set aws_secret_access_key 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 && \
+             aws configure set region us-west-2 && \
+             aws cloudformation delete-stack --stack-name my-stack
+          when: on_fail
+
 workflows:
   my_workflow:
     jobs:
       - configure_infrastructure
+      - smoke_test: 
+          requires: 
+            - configure_infrastructure
