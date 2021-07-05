@@ -17,7 +17,7 @@ jobs:
           command: |
              pwd && \
              ls -al && \
-             aws configure set aws_access_key_id=AKIA5KZXAHFUONFHFYGR
+             aws configure set aws_access_key_id AKIA5KZXAHFUONFHFYGR
              
 workflows:
   my_workflow:
